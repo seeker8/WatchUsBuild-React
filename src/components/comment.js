@@ -29,10 +29,12 @@ export default class Comment extends React.Component {
         <p className="comment-body">{commentBody}</p>
 
         <div className="comment-actions">
-          <CommentConfirmation onDelete={this._handleDelete.bind(this)}>
+          <CommentConfirmation onConfirm={this._handleDelete.bind(this)}>
             Delete Comment?
             </CommentConfirmation>
-          <a href="#" onClick={this._toggleAbuse.bind(this)}>Report as Abuse</a>
+          <CommentConfirmation onConfirm={this._toggleAbuse.bind(this)}>
+            Report as Abuse
+            </CommentConfirmation>
         </div>
       </div>
     );
@@ -40,7 +42,6 @@ export default class Comment extends React.Component {
 
   _toggleAbuse(event) {
     event.preventDefault();
-
     this.setState({
       isAbusive: !this.state.isAbusive
     });
